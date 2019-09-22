@@ -3,7 +3,6 @@ import React from "react";
 // Import 'users' state as props
 const UserTable = props => (
   <table>
-    {console.log(props)}
     <thead>
       <tr>
         <th>Name</th>
@@ -15,7 +14,7 @@ const UserTable = props => (
       {/* Display Users table if users exist, else display 'No Users Exist' */}
       {props.users.length > 0 ? (
         props.users.map(user => (
-          <tr>
+          <tr key={user.id}>
             <th>{user.name}</th>
             <th>{user.email}</th>
             {/* onClick to send user object back to parent component */}
@@ -27,7 +26,12 @@ const UserTable = props => (
             >
               Edit
             </button>
-            <button className="button muted-button">Delete</button>
+            <button
+              className="button muted-button"
+              onClick={() => props.deleteUser(user.id)}
+            >
+              Delete
+            </button>
           </tr>
         ))
       ) : (

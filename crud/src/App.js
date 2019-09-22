@@ -6,9 +6,6 @@ import EditUserForm from "./Forms/EditUserForm";
 const App = () => {
   // Default Values for 'currentUser'
   const initialFormState = { id: null, name: "", email: "" };
-  // const initialUser = [
-  //   { id: 1, name: "Nicholas", email: "Nicholas@gmail.com" }
-  // ];
 
   // State Declarations
   const [users, setUsers] = useState([]);
@@ -32,6 +29,11 @@ const App = () => {
   const updateUser = (id, updatedUser) => {
     setEditMode(false);
     setUsers(users.map(user => (user.id === id ? updatedUser : user)));
+  };
+
+  // Delete user based on id
+  const deleteUser = id => {
+    setUsers(users.filter(user => user.id !== id));
   };
 
   return (
@@ -62,7 +64,12 @@ const App = () => {
           <h2>User List</h2>
           {/* Pass the state to UserTable component */}
           {/* Pass editUser function */}
-          <UserTable users={users} editUser={editUser} addUser={addUser} />
+          {/* Pass delete function */}
+          <UserTable
+            users={users}
+            editUser={editUser}
+            deleteUser={deleteUser}
+          />
         </div>
       </div>
     </div>
