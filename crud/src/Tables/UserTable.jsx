@@ -3,6 +3,7 @@ import React from "react";
 // Import 'users' state as props
 const UserTable = props => (
   <table>
+    {console.log(props)}
     <thead>
       <tr>
         <th>Name</th>
@@ -17,7 +18,15 @@ const UserTable = props => (
           <tr>
             <th>{user.name}</th>
             <th>{user.email}</th>
-            <button className="button muted-button">Edit</button>
+            {/* onClick to send user object back to parent component */}
+            <button
+              className="button muted-button"
+              onClick={() => {
+                props.editUser(user);
+              }}
+            >
+              Edit
+            </button>
             <button className="button muted-button">Delete</button>
           </tr>
         ))
