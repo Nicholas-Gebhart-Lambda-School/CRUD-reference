@@ -1,4 +1,5 @@
 import React from "react";
+import UserTable from "./Tables/UserTable";
 
 function App() {
   return (
@@ -9,7 +10,8 @@ function App() {
           <h2>Add User</h2>
         </div>
         <div className="flex-large">
-          <h2>Add User</h2>
+          <h2>User List</h2>
+          <UserTable />
         </div>
       </div>
     </div>
