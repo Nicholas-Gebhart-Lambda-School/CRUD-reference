@@ -1,6 +1,7 @@
 import React from "react";
 
-const UserTable = () => (
+// Import 'users' state as props
+const UserTable = props => (
   <table>
     <thead>
       <tr>
@@ -10,12 +11,19 @@ const UserTable = () => (
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th>Name Data</th>
-        <th>Email Data</th>
-        <button className="button muted-button">Edit</button>
-        <button className="button muted-button">Delete</button>
-      </tr>
+      {/* Display Users table if users exist, else display 'No Users Exist' */}
+      {props.users.length > 0 ? (
+        props.users.map(user => (
+          <tr>
+            <th>{user.name}</th>
+            <th>{user.email}</th>
+            <button className="button muted-button">Edit</button>
+            <button className="button muted-button">Delete</button>
+          </tr>
+        ))
+      ) : (
+        <td colSpan={3}>No Users Exist</td>
+      )}
     </tbody>
   </table>
 );
